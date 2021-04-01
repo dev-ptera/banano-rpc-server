@@ -1,7 +1,7 @@
 import * as express from 'express';
 import * as cors from 'cors';
 import * as http from 'http';
-import { PORT, RPC_URL, ALLOWED_ACTIONS, URL_WHITE_LIST, API_URL } from './config';
+import { RPC_URL, ALLOWED_ACTIONS, URL_WHITE_LIST, API_URL, PROD_PORT, DEV_PORT } from './config';
 import axios, { AxiosResponse } from 'axios';
 const bodyParser = require('body-parser');
 import { Request, Response } from 'express';
@@ -12,10 +12,16 @@ app.options('*', cors());
 app.use(bodyParser.json());
 app.use(bodyParser.raw());
 
+const args = process.argv.slice(2);
+const isProduction = (): boolean => args && args[0] === 'PRODUCTION';
+const send = (res, data): void => res.send(JSON.stringify(data));
+
 const corsOptions = {
     origin: function (origin, callback) {
+        if (!origin && isProduction()) {
+            callback(new Error('No origin provided.'));
+        }
         if (origin && URL_WHITE_LIST.indexOf(origin) === -1) {
-            // TODO: If Production, deny no origin.
             callback(new Error('Not allowed by CORS'));
         } else {
             callback(null, true);
@@ -23,8 +29,6 @@ const corsOptions = {
     },
 };
 
-// JSON-ify the response
-const send = (res, data): void => res.send(JSON.stringify(data));
 
 // Call local Banano node
 const contactRpc = (body): Promise<any> =>
@@ -47,6 +51,7 @@ app.post(`/${API_URL}`, cors(corsOptions), async (req: Request, res: Response) =
         .catch((err) => send(res, err));
 });
 
-http.createServer(app).listen(PORT, () => {
-    console.log(`Running RPC server on port ${PORT}.`);
+const port = isProduction() ? PROD_PORT : DEV_PORT;
+http.createServer(app).listen(port, () => {
+    console.log(`Running RPC server on port ${port}.`);
 });

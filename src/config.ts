@@ -1,5 +1,6 @@
 export const RPC_URL = 'http://[::1]:7072';
-export const PORT = 3002;
+export const DEV_PORT = 3002;
+export const PROD_PORT = 4002;
 export const API_URL = 'banano-rpc';
 export const URL_WHITE_LIST = ['http://localhost:4200', 'https://is-banano-decentralized.web.app'];
 
