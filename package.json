@@ -3,9 +3,10 @@
     "version": "0.0.0",
     "scripts": {
         "build": "tsc",
+        "build:production": "tsc --outDir dist/prod",
         "prettier": "prettier \"src/**.{ts,js}\" --write",
-        "start": "yarn build && cd dist && node app.js",
-        "start:production": "yarn build && cd dist && node app.js 'PRODUCTION'"
+        "start": "yarn build && cd dist/dev && node app.js",
+        "start:production": "yarn build:production && cd dist/prod && node app.js 'PRODUCTION'"
     },
     "private": true,
     "dependencies": {

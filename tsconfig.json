@@ -3,7 +3,7 @@
     "compileOnSave": false,
     "compilerOptions": {
         "baseUrl": "./",
-        "outDir": "./dist",
+        "outDir": "./dist/dev",
         "sourceMap": false,
         "moduleResolution": "node",
         "module": "commonjs",
