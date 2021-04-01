@@ -1,2 +1,2 @@
 # banano-rpc-server
-Server which runs locally, pairing with a banano node.
+# Server which runs locally, pairing with a local node.
