@@ -29,7 +29,6 @@ const corsOptions = {
     },
 };
 
-
 // Call local Banano node
 const contactRpc = (body): Promise<any> =>
     axios
