@@ -18,9 +18,6 @@ const send = (res, data, status = 200): void => res.status(status).send(JSON.str
 
 const corsOptions = {
     origin: function (origin, callback) {
-        if (!origin && isProduction()) {
-            callback(new Error('No origin provided.'));
-        }
         if (origin && URL_WHITE_LIST.indexOf(origin) === -1) {
             callback(new Error('Not allowed by CORS'));
         } else {
@@ -41,6 +38,7 @@ const contactRpc = (body): Promise<any> =>
         .catch((err) => Promise.reject(err));
 
 app.post(`/${API_URL}`, cors(corsOptions), async (req: Request, res: Response) => {
+    console.log(req);
     const body = req.body;
     if (!body || !body.action || !ALLOWED_ACTIONS.includes(body.action)) {
         const error = `RPC action not enabled: ${req.body?.action}`;
