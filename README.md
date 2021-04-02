@@ -1,5 +1,5 @@
 # banano-rpc-server
-This is a middleware server which queries a local Banano node via enabled RPC actions.
+This is a middleware server which queries a local Banano node via configurable RPC actions.
 
 This project supports two environments:
 
