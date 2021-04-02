@@ -38,7 +38,6 @@ const contactRpc = (body): Promise<any> =>
         .catch((err) => Promise.reject(err));
 
 app.post(`/${API_URL}`, cors(corsOptions), async (req: Request, res: Response) => {
-    console.log(req);
     const body = req.body;
     if (!body || !body.action || !ALLOWED_ACTIONS.includes(body.action)) {
         const error = `RPC action not enabled: ${req.body?.action}`;
