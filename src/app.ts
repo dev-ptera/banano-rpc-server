@@ -14,7 +14,7 @@ app.use(bodyParser.raw());
 
 const args = process.argv.slice(2);
 const isProduction = (): boolean => args && args[0] === 'PRODUCTION';
-const send = (res, data): void => res.send(JSON.stringify(data));
+const send = (res, data, status = 200): void => res.status(status).send(JSON.stringify(data));
 
 const corsOptions = {
     origin: function (origin, callback) {
@@ -43,11 +43,12 @@ const contactRpc = (body): Promise<any> =>
 app.post(`/${API_URL}`, cors(corsOptions), async (req: Request, res: Response) => {
     const body = req.body;
     if (!body || !body.action || !ALLOWED_ACTIONS.includes(body.action)) {
-        return send(res, { error: 'invalid or disabled action' });
+        const error = `RPC action not enabled: ${req.body?.action}`;
+        return send(res, { error }, 501);
     }
     await contactRpc(body)
         .then((data) => send(res, data))
-        .catch((err) => send(res, err));
+        .catch((err) => send(res, err, 500));
 });
 
 const port = isProduction() ? PROD_PORT : DEV_PORT;
