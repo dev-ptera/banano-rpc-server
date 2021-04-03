@@ -1,9 +1,22 @@
-export const RPC_URL = 'http://[::1]:7072';
-export const DEV_PORT = 3002;
-export const PROD_PORT = 4002;
-export const API_URL = 'banano-rpc';
-export const URL_WHITE_LIST = ['http://localhost:4200', 'https://is-banano-decentralized.web.app'];
+/* Nano/Banano Node RPC URL */
+export const NANO_RPC_URL = 'http://[::1]:7072';
 
+/* Server port when ran locally for development purposes. */
+export const APP_DEV_PORT = 3002;
+
+/* Server port when listening to outside requests. */
+export const APP_PROD_PORT = 4002;
+
+/* URL path where the app is served.  Example: http://[YOUR-IP]:[APP_DEV_PORT | APP_PROD_PORT]/[APP_PATH] */
+export const APP_PATH = 'banano-rpc';
+
+/* List of enabled websites that can bypass server CORS restriction. */
+export const URL_WHITE_LIST = [];
+
+/*
+   List of actions we can use with Nano RPC Protocol,
+   Full list of actions & descriptions here: https://docs.nano.org/commands/rpc-protocol
+ */
 export const ALLOWED_ACTIONS = [
     // 'account_balance',
     // 'account_block_count',

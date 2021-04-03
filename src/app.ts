@@ -1,7 +1,7 @@
 import * as express from 'express';
 import * as cors from 'cors';
 import * as http from 'http';
-import { RPC_URL, ALLOWED_ACTIONS, URL_WHITE_LIST, API_URL, PROD_PORT, DEV_PORT } from './config';
+import { NANO_RPC_URL, ALLOWED_ACTIONS, URL_WHITE_LIST, APP_DEV_PORT, APP_PATH, APP_PROD_PORT } from './config';
 import axios, { AxiosResponse } from 'axios';
 const bodyParser = require('body-parser');
 import { Request, Response } from 'express';
@@ -30,14 +30,14 @@ const corsOptions = {
 const contactRpc = (body): Promise<any> =>
     axios
         .request<any>({
-            method: 'post',
-            url: RPC_URL,
+            method: 'POST',
+            url: NANO_RPC_URL,
             data: body,
         })
         .then((response: AxiosResponse<any>) => Promise.resolve(response.data))
         .catch((err) => Promise.reject(err));
 
-app.post(`/${API_URL}`, cors(corsOptions), async (req: Request, res: Response) => {
+app.post(`/${APP_PATH}`, cors(corsOptions), async (req: Request, res: Response) => {
     const body = req.body;
     if (!body || !body.action || !ALLOWED_ACTIONS.includes(body.action)) {
         const error = `RPC action not enabled: ${req.body?.action}`;
@@ -48,7 +48,7 @@ app.post(`/${API_URL}`, cors(corsOptions), async (req: Request, res: Response) =
         .catch((err) => send(res, err, 500));
 });
 
-const port = isProduction() ? PROD_PORT : DEV_PORT;
+const port = isProduction() ? APP_PROD_PORT : APP_DEV_PORT;
 http.createServer(app).listen(port, () => {
     console.log(`Running RPC server on port ${port}.`);
 });
