@@ -17,4 +17,4 @@ Intended for serving requests from APIs or whitelisted domains.  Output build fo
 
 
 ## Configuration
-`nano-rpc-server` can be configured to proxy requests to Nano or Banano nodes.  The supported config options can be found in `src/config.ts`
+`nano-rpc-server` can be configured to support custom node RPC ports, select RPC `actions`, etc. The supported config options can be found in `src/config.ts`
