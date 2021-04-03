@@ -1,4 +1,4 @@
-# nano-rpc-server
+# nano-rpc-proxy
 This is a nodejs express app which proxies Nano (or Banano) RPC requests.
 It is intended that this app runs on the same machine as a fully synced Nano node. 
 
