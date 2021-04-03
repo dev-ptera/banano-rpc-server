@@ -1,6 +1,8 @@
 {
-    "name": "banano-rpc-server",
+    "name": "nano-rpc-server",
     "version": "0.0.0",
+    "description": "NodeJS Express app which proxies Nano RPC requests",
+    "license": "MIT",
     "scripts": {
         "build": "tsc",
         "build:production": "tsc --outDir dist/prod",
