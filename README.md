@@ -6,16 +6,18 @@ It is intended that this app runs on the same machine as a fully synced Nano nod
 
 ## Environments
 
-#### Local Development `dev`
+**Local Development** `[dev]`
+
 Intended for local development. Output build folder is `dist/dev`.
 
-#### Production Development `prod`
+**Production Development** `[prod]`
+
 Intended for serving requests from APIs or whitelisted domains.  Output build folder is `dist/prod`. 
 
 ## Commands
-`yarn start` > starts the development server at default port `3002`
+`yarn start` > starts the development server at default port `1119`
 
-`yarn start:production` > starts the production server at default port `4002`
+`yarn start:production` > starts the production server at default port `1120`
 
 
 ## Configuration

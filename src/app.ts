@@ -18,8 +18,8 @@ const send = (res, data, status = 200): void => res.status(status).send(JSON.str
 
 const corsOptions = {
     origin: function (origin, callback) {
-        if (origin && URL_WHITE_LIST.indexOf(origin) === -1) {
-            callback(new Error('Not allowed by CORS'));
+        if (isProduction() && origin && URL_WHITE_LIST.indexOf(origin) === -1) {
+            callback(new Error(`Origin '${origin}' is not allowed by CORS`));
         } else {
             callback(null, true);
         }

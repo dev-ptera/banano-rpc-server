@@ -2,10 +2,10 @@
 export const NANO_RPC_URL = 'http://[::1]:7072';
 
 /* Server port when ran locally for development purposes. */
-export const APP_DEV_PORT = 3002;
+export const APP_DEV_PORT = 1119;
 
 /* Server port when listening to outside requests. */
-export const APP_PROD_PORT = 4002;
+export const APP_PROD_PORT = 1120;
 
 /* URL path where the app is served.  Example: http://[YOUR-IP]:[APP_DEV_PORT | APP_PROD_PORT]/[APP_PATH] */
 export const APP_PATH = 'banano-rpc';
@@ -36,7 +36,7 @@ export const ALLOWED_ACTIONS = [
     // 'accounts_create',
     // 'accounts_frontiers',
     // 'accounts_pending',
-    // 'available_supply',
+    'available_supply',
     // 'block',
     // 'block_confirm',
     // 'blocks',
