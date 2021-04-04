@@ -12,7 +12,7 @@ Intended for local development. Output build folder is `dist/dev`.
 
 **Production Development** `[prod]`
 
-Intended for serving requests from APIs or whitelisted domains.  Output build folder is `dist/prod`. 
+Intended for serving requests from external apps or whitelisted domains.  Output build folder is `dist/prod`. 
 
 ## Commands
 `yarn start` > starts the development server at default port `1119`
