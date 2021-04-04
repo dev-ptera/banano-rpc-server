@@ -11,7 +11,7 @@ export const APP_PROD_PORT = 1120;
 export const APP_PATH = 'banano-rpc';
 
 /* List of enabled websites that can bypass server CORS restriction. */
-export const URL_WHITE_LIST = [];
+export const URL_WHITE_LIST = ['http://localhost'];
 
 /*
    List of actions we can use with Nano RPC Protocol,
