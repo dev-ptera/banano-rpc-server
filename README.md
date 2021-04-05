@@ -3,7 +3,7 @@
 This is a nodejs express app which proxies Nano (or Banano) RPC requests.
 It is intended that this app runs on the same machine as a fully synced Nano node.
 
-<img src="./stack.png" alt="Nano Client Stack" width="600" />
+<img src="./stack.png" alt="Nano Client Stack" />
 
 For instructions on how to setup a Nano node, visit https://docs.nano.org/running-a-node/node-setup/
 
