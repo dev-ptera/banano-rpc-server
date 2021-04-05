@@ -1,23 +1,26 @@
 export type NanoProxyServerConfig = {
-
+    /** Server is expected to serve external requests. */
     IS_PRODUCTION: boolean;
 
-    /* Nano/Banano Node RPC URL */
+    /** Nano/Banano Node RPC URL */
     NANO_RPC_URL: string;
 
-    /* Server port when ran locally for development purposes. */
+    /** Server port when ran locally for development purposes. */
     APP_DEV_PORT: number;
 
-    /* Server port when listening to outside requests. */
+    /** Server port when listening to outside requests. */
     APP_PROD_PORT: number;
 
-    /* URL path where the app is served.  Example: http://[YOUR-IP]:[APP_DEV_PORT | APP_PROD_PORT]/[APP_PATH] */
+    /** URL path where the app is served.  Example: http://[YOUR-IP]:[APP_DEV_PORT | APP_PROD_PORT]/[APP_PATH] */
     APP_PATH: string;
 
-    /* List of enabled websites that can bypass server CORS restriction. */
+    /**
+       List of enabled websites that can bypass server CORS restriction.
+       CORS is not enforced when server is ran in development-mode.
+    */
     URL_WHITE_LIST: string[];
 
-    /*
+    /**
        List of actions we can use with Nano RPC Protocol,
        Full list of actions & descriptions here: https://docs.nano.org/commands/rpc-protocol
      */

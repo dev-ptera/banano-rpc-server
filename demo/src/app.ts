@@ -3,7 +3,7 @@ import { NanoProxyServer } from '@dev-ptera/nano-rpc-proxy';
 
 const args = process.argv.slice(2);
 const server = new NanoProxyServer(express(), {
-
+    /* Server is expected to serve external requests. */
     IS_PRODUCTION: args && args[0] === 'production',
 
     /* Nano/Banano Node RPC URL */
@@ -18,7 +18,10 @@ const server = new NanoProxyServer(express(), {
     /* URL path where the app is served.  Example: http://[YOUR-IP]:[APP_DEV_PORT | APP_PROD_PORT]/[APP_PATH] */
     APP_PATH: 'banano-rpc',
 
-    /* List of enabled websites that can bypass server CORS restriction. */
+    /*
+       List of enabled websites that can bypass server CORS restriction.
+       CORS is not enforced when server is ran in development-mode.
+    */
     URL_WHITE_LIST: ['http://localhost'],
 
     /*

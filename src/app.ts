@@ -7,7 +7,6 @@ import { Express, Request, Response } from 'express';
 const bodyParser = require('body-parser');
 
 export class NanoProxyServer {
-
     app: Express;
     config: NanoProxyServerConfig;
 

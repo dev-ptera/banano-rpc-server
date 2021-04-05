@@ -6,6 +6,7 @@
         "outDir": "./dist",
         "sourceMap": false,
         "declaration": true,
+        "removeComments": false,
         "moduleResolution": "node",
         "module": "commonjs",
         "downlevelIteration": true,
