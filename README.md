@@ -14,6 +14,8 @@ or
 
 `npm i @dev-ptera/nano-rpc-proxy`
 
+###
+Add the following to your typescript application:
 ```ts
 import { NanoProxyServer } from '@dev-ptera/nano-rpc-proxy';
 

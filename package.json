@@ -44,7 +44,8 @@
     "server",
     "express",
     "nodejs",
-    "nanocurrency"
+    "nanocurrency",
+    "typescript"
   ],
   "bugs": {
     "url": "https://github.com/dev-ptera/nano-rpc-proxy/issues"
