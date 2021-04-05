@@ -8,11 +8,11 @@ It is intended that this app runs on the same machine as a fully synced Nano nod
 
 **Local Development** 
 
-Intended for local development. Output build folder is `dist/dev`
+Intended for local development.
 
 **Production Development** 
 
-Intended for serving requests from external apps or whitelisted domains.  Output build folder is `dist/prod`
+Intended for serving requests from external apps or whitelisted domains. 
 
 ## Commands
 `yarn start` > starts the development server at default port `1119`
