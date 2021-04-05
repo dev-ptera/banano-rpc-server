@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "module": "commonjs",
+        "target": "es6",
+        "lib": ["es2018", "dom"]
+    },
+    "include": ["src"]
+}
