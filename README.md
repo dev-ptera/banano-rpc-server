@@ -17,6 +17,7 @@ or
 ###
 Add the following to your typescript application:
 ```ts
+import * as express from 'express';
 import { NanoProxyServer } from '@dev-ptera/nano-rpc-proxy';
 
 
