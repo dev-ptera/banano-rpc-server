@@ -54,7 +54,7 @@ export class NanoProxyServer {
     start(): void {
         const port = this.config.IS_PRODUCTION ? this.config.APP_PROD_PORT : this.config.APP_DEV_PORT;
         http.createServer(this.app).listen(port, () => {
-            console.log(`Running RPC server on port ${port}.`);
+            console.log(`Running @dev-ptera/nano-rpc-proxy server on port ${port}.`);
         });
     }
 }
