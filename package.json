@@ -1,6 +1,6 @@
 {
   "name": "@dev-ptera/nano-rpc-proxy",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Express app which proxies Nano RPC requests",
   "license": "MIT",
   "main": "dist/index.js",
@@ -44,6 +44,7 @@
     "server",
     "express",
     "nodejs",
+    "rpc",
     "nanocurrency",
     "typescript"
   ],
