@@ -1,10 +1,9 @@
 import * as cors from 'cors';
 import * as http from 'http';
+import * as bodyParser from 'body-parser';
 import { NanoProxyServerConfig } from './config';
 import axios, { AxiosResponse } from 'axios';
 import { Express, Request, Response } from 'express';
-
-const bodyParser = require('body-parser');
 
 export class NanoProxyServer {
     app: Express;

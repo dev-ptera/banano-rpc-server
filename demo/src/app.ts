@@ -25,7 +25,7 @@ const server = new NanoProxyServer(express(), {
        List of enabled websites that can bypass server CORS restriction.
        CORS is not enforced when server is ran in development-mode.
     */
-    URL_WHITE_LIST: ['http://localhost', 'https://is-banano-decentralized.dev-ptera.com'],
+    URL_WHITE_LIST: ['https://is-banano-decentralized.dev-ptera.com'],
 
     /*
        List of actions we can use with Nano RPC Protocol,

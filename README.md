@@ -68,3 +68,8 @@ This server can be configured to support:
 - etc.
 
 All supported config options can be found in `src/config.ts`
+
+## Error Handling
+
+This sever returns an error code 501 when a disabled action was requested by a client.  
+This server returns an error code 500 for everything else.
