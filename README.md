@@ -1,6 +1,6 @@
 # @dev-ptera/nano-rpc-proxy
 
-This is a nodejs express app which proxies incoming Nano RPC API requests and queries a configured Nano node.  It is intended that this app runs on the same machine as a fully synced Nano node.
+This is an express app which filters incoming Nano RPC requests and queries a configured Nano node.  It is intended that this app runs on the same machine as a fully synced Nano node.
 
 For instructions on how to setup a Nano node, visit https://docs.nano.org/running-a-node/node-setup/
 
@@ -62,21 +62,22 @@ server.start();
 
 
 ## Configuration
+
 This server can be configured to support:
 
 - Whitelisted external domains.
-- Select RPC actions
+- Enabled/disabled RPC actions
 - Nano or Banano Nodes
 - Custom Server Ports & Server Path
 - etc.
 
 All supported config options can be found in `src/config.ts`
 
-## Error Handling
 
+## Error Handling
 
 This sever returns an error code 501 when a disabled action was requested by a client.  
 This server returns an error code 500 if a request is blocked by CORS or any other generic error happens within the proxy.
 
 
-If the Nano Node responds to a request, but returns an `error` response due to invalid or missing account info, JSON parsing issues, etc this proxy will return a status code 200 since the error was generated from the Nano Node.
+If the Nano RPC request returns an `error` response due to invalid or missing account info, JSON parsing issues, etc this proxy will return a status code 200 since the error was generated from the Nano Node.
