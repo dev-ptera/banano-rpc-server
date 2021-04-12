@@ -2,9 +2,11 @@ import * as express from 'express';
 import { NanoProxyServer } from '@dev-ptera/nano-rpc-proxy';
 
 const args = process.argv.slice(2);
+const path = 'banano-rpc';
 const server = new NanoProxyServer(express(), {
     /* Server message emitted when app starts listening on `port`. */
-    APP_LISTENING_MSG: (port: number): string => `Running @dev-ptera/nano-rpc-proxy server on port ${port}.`,
+    APP_LISTENING_MSG: (port: number): string =>
+        `Running @dev-ptera/nano-rpc-proxy server on port ${port} at path /${path}.`,
 
     /* Server is expected to serve external requests. */
     IS_PRODUCTION: args && args[0] === 'production',
@@ -19,7 +21,7 @@ const server = new NanoProxyServer(express(), {
     APP_PROD_PORT: 1120,
 
     /* URL path where the app is served.  Example: http://[YOUR-IP]:[APP_DEV_PORT | APP_PROD_PORT]/[APP_PATH] */
-    APP_PATH: 'banano-rpc',
+    APP_PATH: path,
 
     /*
        List of enabled websites that can bypass server CORS restriction.
@@ -43,7 +45,7 @@ const server = new NanoProxyServer(express(), {
         // 'account_list',
         // 'account_move',
         // 'account_remove',
-        // 'account_representative',
+        'account_representative',
         // 'account_representative_set',
         // 'account_weight',
         // 'accounts_balances',

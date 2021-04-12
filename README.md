@@ -71,5 +71,9 @@ All supported config options can be found in `src/config.ts`
 
 ## Error Handling
 
+
 This sever returns an error code 501 when a disabled action was requested by a client.  
-This server returns an error code 500 for everything else.
+This server returns an error code 500 if a request is blocked by CORS or any other generic error happens within the proxy.
+
+
+If the Nano Node responds to a request, but returns an `error` response due to invalid or missing account info, JSON parsing issues, etc this proxy will return a status code 200 since the error was generated from the Nano Node.
