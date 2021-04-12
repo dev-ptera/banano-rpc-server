@@ -7,7 +7,7 @@
         "build": "tsc --outDir dist/dev",
         "build:prod": "tsc --outDir dist/prod",
         "start": "yarn build && cd dist/dev && node app.js",
-        "start:prod": "yarn build:production && cd dist/prod && node app.js production"
+        "start:prod": "yarn build:prod && cd dist/prod && node app.js production"
     },
     "private": true,
     "dependencies": {

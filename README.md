@@ -1,6 +1,6 @@
 # @dev-ptera/nano-rpc-proxy
 
-This is a nodejs express app which proxies incoming Nano RPC API requests and queries a configured Nano node.  It is intended that this app runs on the same machine as a fully synced Nano node.
+This is an express app which filters incoming Nano RPC requests and queries a configured Nano node.  It is intended that this app runs on the same machine as a fully synced Nano node.
 
 For instructions on how to setup a Nano node, visit https://docs.nano.org/running-a-node/node-setup/
 
@@ -14,11 +14,18 @@ or
 
 `npm i @dev-ptera/nano-rpc-proxy`
 
+###
+Add the following to your typescript application:
 ```ts
+import * as express from 'express';
 import { NanoProxyServer } from '@dev-ptera/nano-rpc-proxy';
 
 
 const server = new NanoProxyServer(express(), {
+    
+    /* Server message emitted when app starts listening on `port`. */
+    APP_LISTENING_MSG: (port: number) => 
+        `Running @dev-ptera/nano-rpc-proxy server on port ${port}.`,
 
     /* Server is expected to serve external requests. */
     IS_PRODUCTION: false,
@@ -32,7 +39,9 @@ const server = new NanoProxyServer(express(), {
     /* Server port when listening to outside requests. */
     APP_PROD_PORT: 1120,
 
-    /* URL path where the app is served.  Example: http://[YOUR-IP]:[APP_DEV_PORT | APP_PROD_PORT]/[APP_PATH] */
+    /* URL path where the app is served.  
+       Example: http://[YOUR-IP]:[APP_DEV_PORT | APP_PROD_PORT]/[APP_PATH] 
+    */
     APP_PATH: '',
 
     /* 
@@ -53,12 +62,22 @@ server.start();
 
 
 ## Configuration
+
 This server can be configured to support:
 
 - Whitelisted external domains.
-- Select RPC actions
+- Enabled/disabled RPC actions
 - Nano or Banano Nodes
 - Custom Server Ports & Server Path
 - etc.
 
 All supported config options can be found in `src/config.ts`
+
+
+## Error Handling
+
+This sever returns an error code 501 when a disabled action was requested by a client.  
+This server returns an error code 500 if a request is blocked by CORS or any other generic error happens within the proxy.
+
+
+If the Nano RPC request returns an `error` response due to invalid or missing account info, JSON parsing issues, etc this proxy will return a status code 200 since the error was generated from the Nano Node.
