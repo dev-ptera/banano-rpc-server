@@ -24,7 +24,8 @@ import { NanoProxyServer } from '@dev-ptera/nano-rpc-proxy';
 const server = new NanoProxyServer(express(), {
     
     /* Server message emitted when app starts listening on `port`. */
-    APP_LISTENING_MSG: (port: number) => `Running @dev-ptera/nano-rpc-proxy server on port ${port}.`,
+    APP_LISTENING_MSG: (port: number) => 
+        `Running @dev-ptera/nano-rpc-proxy server on port ${port}.`,
 
     /* Server is expected to serve external requests. */
     IS_PRODUCTION: false,
@@ -38,7 +39,9 @@ const server = new NanoProxyServer(express(), {
     /* Server port when listening to outside requests. */
     APP_PROD_PORT: 1120,
 
-    /* URL path where the app is served.  Example: http://[YOUR-IP]:[APP_DEV_PORT | APP_PROD_PORT]/[APP_PATH] */
+    /* URL path where the app is served.  
+       Example: http://[YOUR-IP]:[APP_DEV_PORT | APP_PROD_PORT]/[APP_PATH] 
+    */
     APP_PATH: '',
 
     /* 
