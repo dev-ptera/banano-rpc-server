@@ -60,7 +60,7 @@ const server = new NanoProxyServer(express(), {
      * Optional function ran to security-check incoming requests.
      * Runs after the CORS filter.
      */
-    REQUEST_FILTER?: (req: Request, res: Response, next: NextFunction) => void;
+    REQUEST_FILTER: (req: Request, res: Response, next: NextFunction) => void;
 };
 });
 
