@@ -35,6 +35,9 @@ export class NanoProxyServer {
 
         app.use(bodyParser.json());
         app.use(cors(corsOptions));
+        if (config.REQUEST_FILTER) {
+            app.use(config.REQUEST_FILTER);
+        }
         app.post(`/${config.APP_PATH}`, async (req: Request, res: Response) => {
             const body = req.body;
             if (!body || !body.action || !config.ALLOWED_ACTIONS.includes(body.action)) {

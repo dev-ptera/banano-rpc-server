@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.1.0
+
+### Added
+- Added additional `REQ_FILTER` config prop which adds an optional security check to incoming requests.
+
 ## v1.0.0
 
 ### Added
