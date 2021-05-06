@@ -32,10 +32,9 @@ const server = new NanoProxyServer(express(), {
     */
     URL_WHITE_LIST: ['http://localhost'],
 
-    /**
+    /*
      * Optional function ran to security-check incoming requests.
      * Runs after the CORS filter.
-     * @returns false if the request should be terminated.
      */
     REQUEST_FILTER: (req: Request, res: Response, next: NextFunction): void => {
         const origin = req.get('origin');
