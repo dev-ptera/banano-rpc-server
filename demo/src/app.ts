@@ -1,15 +1,18 @@
 import * as express from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { NanoProxyServer } from '@dev-ptera/nano-rpc-proxy';
+import { authKeys } from './auth-keys';
 
 const args = process.argv.slice(2);
 const path = 'banano-rpc';
+const isProduction = args && args[0] === 'production';
 const server = new NanoProxyServer(express(), {
     /* Server message emitted when app starts listening on `port`. */
     APP_LISTENING_MSG: (port: number): string =>
         `Running @dev-ptera/nano-rpc-proxy server on port ${port} at path /${path}.`,
 
     /* Server is expected to serve external requests. */
-    IS_PRODUCTION: args && args[0] === 'production',
+    IS_PRODUCTION: isProduction,
 
     /* Nano/Banano Node RPC URL */
     NANO_RPC_URL: 'http://[::1]:7072',
@@ -27,7 +30,29 @@ const server = new NanoProxyServer(express(), {
        List of enabled websites that can bypass server CORS restriction.
        CORS is not enforced when server is ran in development-mode.
     */
-    URL_WHITE_LIST: ['https://is-banano-decentralized.dev-ptera.com'],
+    URL_WHITE_LIST: ['http://localhost'],
+
+    /**
+     * Optional function ran to security-check incoming requests.
+     * Runs after the CORS filter.
+     * @returns false if the request should be terminated.
+     */
+    REQUEST_FILTER: (req: Request, res: Response, next: NextFunction): void => {
+        const origin = req.get('origin');
+        if (isProduction && !origin) {
+            // Authorization Required
+            const auth = req.get('authorization');
+            if (!authKeys.has(auth)) {
+                res.status(401).send(
+                    JSON.stringify({
+                        error: 'unauthorized',
+                    })
+                );
+                return;
+            }
+        }
+        next();
+    },
 
     /*
        List of actions we can use with Nano RPC Protocol,
@@ -67,6 +92,7 @@ const server = new NanoProxyServer(express(), {
         // 'bootstrap_any',
         // 'chain',
         // 'confirmation_history',
+        'confirmation_quorum',
         // 'delegators',
         // 'delegators_count',
         // 'deterministic_key',
@@ -80,7 +106,7 @@ const server = new NanoProxyServer(express(), {
         // 'krai_to_raw',
         // 'ledger',
         'mrai_from_raw',
-        // 'mrai_to_raw',
+        'mrai_to_raw',
         // 'password_change',
         // 'password_enter',
         // 'password_valid',

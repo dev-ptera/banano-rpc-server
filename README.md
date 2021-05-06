@@ -55,6 +55,14 @@ const server = new NanoProxyServer(express(), {
        Full list of actions & descriptions here: https://docs.nano.org/commands/rpc-protocol
      */
     ALLOWED_ACTIONS: ['account_balance']
+
+    /**
+     * Optional function ran to security-check incoming requests.
+     * Runs after the CORS filter.
+     * @returns false if the request should be terminated.
+     */
+    REQUEST_FILTER?: (req: Request, res: Response, next: NextFunction) => void;
+};
 });
 
 server.start();

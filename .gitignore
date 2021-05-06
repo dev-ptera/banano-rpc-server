@@ -2,3 +2,5 @@ node_modules
 dist
 .idea
 app.js
+
+auth-keys.ts
