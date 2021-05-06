@@ -56,7 +56,7 @@ const server = new NanoProxyServer(express(), {
      */
     ALLOWED_ACTIONS: ['account_balance']
 
-    /**
+    /*
      * Optional function ran to security-check incoming requests.
      * Runs after the CORS filter.
      */
