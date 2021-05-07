@@ -3,5 +3,5 @@
 To publish this package, run:
 
 ```
-yarn build && npm publish
+yarn build:production && npm publish
 ```
