@@ -4,7 +4,7 @@
 
 ### Added
 
-- Added `REQUEST_FILTER` config prop which adds an optional security check to incoming requests.
+- Added `REQUEST_FILTER` config option for additional security check to incoming requests.
 
 ## v1.0.0
 
