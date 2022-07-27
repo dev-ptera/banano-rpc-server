@@ -14,7 +14,7 @@ const server = new NanoProxyServer(express(), {
     IS_PRODUCTION: isProduction,
 
     /* Nano/Banano Node RPC URL */
-    NANO_RPC_URL: 'http://[::1]:7072',
+    NANO_RPC_URL: 'http://65.21.249.42:7072',
 
     /* Server port when ran locally for development purposes. */
     APP_DEV_PORT: 1119,
