@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.2.0
+
+### Added
+
+- Added wildcard option to `URL_WHITE_LIST` config option to passby CORS restriction in production mode.
+
+### Changed
+
+- Changed `cors` `preflightContinue` option from `true` to `false`.
+
 ## v1.1.2
 
 ### Added

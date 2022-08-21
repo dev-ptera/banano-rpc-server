@@ -14,12 +14,16 @@ export class NanoProxyServer {
         this.config = config;
         const corsOptions = {
             origin: function (origin, callback) {
-                if (config.IS_PRODUCTION && origin && config.URL_WHITE_LIST.indexOf(origin) === -1) {
+                if (config.IS_PRODUCTION
+                    && origin
+                    && config.URL_WHITE_LIST
+                    && (config.URL_WHITE_LIST[0] === '**' || config.URL_WHITE_LIST.indexOf(origin) === -1)) {
                     callback(new Error(`Origin '${origin}' is not allowed by CORS`));
                 } else {
                     callback(null, true);
                 }
             },
+            preflightContinue: false,
         };
 
         const send = (res, data, status: number): void => res.status(status).send(JSON.stringify(data));
