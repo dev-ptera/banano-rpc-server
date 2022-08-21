@@ -8,7 +8,8 @@
     "build": "tsc --outDir demo/node_modules/@dev-ptera/nano-rpc-proxy/dist && cp package.json demo/node_modules/@dev-ptera/nano-rpc-proxy",
     "build:production": "tsc",
     "prettier": "prettier \"src/**.{ts,js}\" --write && prettier \"demo/src/**.{ts,js}\" --write",
-    "start:demo": "cd demo && yarn && cd .. && yarn && yarn build && cd demo && yarn start"
+    "start:demo": "cd demo && yarn && cd .. && yarn && yarn build && cd demo && yarn start",
+    "start:demo-prod": "cd demo && yarn && cd .. && yarn && yarn build && cd demo && yarn start:prod"
   },
   "private": false,
   "prettier": "@pxblue/prettier-config",
