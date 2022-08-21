@@ -17,7 +17,7 @@ export class NanoProxyServer {
                 if (config.IS_PRODUCTION
                     && origin
                     && config.URL_WHITE_LIST
-                    && (config.URL_WHITE_LIST[0] === '**' || config.URL_WHITE_LIST.indexOf(origin) === -1)) {
+                    && (config.URL_WHITE_LIST[0] !== '**' || config.URL_WHITE_LIST.indexOf(origin) === -1)) {
                     callback(new Error(`Origin '${origin}' is not allowed by CORS`));
                 } else {
                     callback(null, true);
