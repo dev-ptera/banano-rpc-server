@@ -14,6 +14,8 @@ export class NanoProxyServer {
         this.config = config;
         const corsOptions = {
             origin: function (origin, callback) {
+                console.log(config.URL_WHITE_LIST);
+                console.log(config.URL_WHITE_LIST[0]);
                 if (config.IS_PRODUCTION
                     && origin
                     && config.URL_WHITE_LIST
