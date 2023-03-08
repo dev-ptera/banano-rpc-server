@@ -80,6 +80,7 @@ const server = new NanoProxyServer(express(), {
         'block',
         'block_confirm',
         'blocks',
+        'block_info',
         'blocks_info',
         'block_account',
         'block_count',
