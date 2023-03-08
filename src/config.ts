@@ -66,6 +66,7 @@ export type AllowedActions =
     | 'block_create'
     | 'block_hash'
     | 'blocks'
+    | 'block_info'
     | 'blocks_info'
     | 'successors'
     | 'bootstrap'
